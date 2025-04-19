@@ -1,0 +1,22 @@
+{
+  "name": "playwright-basics",
+  "version": "1.0.0",
+  "description": "Test Automation PH - Playwright Basics Training",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irishannm/Playwright-Basics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irishannm/Playwright-Basics/issues"
+  },
+  "homepage": "https://github.com/irishannm/Playwright-Basics#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.14.1"
+  }
+}
