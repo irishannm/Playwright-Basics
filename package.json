@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Test Automation PH - Playwright Basics Training",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "example-test":"npx playwright test example.spec.ts --project chromium --ui",
+    "login-test": "npx playwright test login.spec.ts --project chromium"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/irishannm/Playwright-Basics.git"
