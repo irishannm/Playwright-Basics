@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "example-test":"npx playwright test example.spec.ts --project chromium --ui",
-    "login-test": "npx playwright test login.spec.ts --project chromium"
+    "login-test": "npx playwright test login.spec.ts --project chromium",
+    "TC1-NewUser": "npx playwright test TestCase1_New_User_Sign_Up.spec.ts --project chromium"
   },
   "repository": {
     "type": "git",
