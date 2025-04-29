@@ -3,5 +3,12 @@
     "email": "test.main@gmail.com",
     "password": "test123",
     "First_Name": "Irish",
-    "Last_Name": "Ann"
+    "Last_Name": "Ann",
+    "Company": "Abc Company",
+    "Address1": "Valenzuela City",
+    "Address2": "Valenzuela City",
+    "State": "Singapore",
+    "City": "Singapore",
+    "Zipcode": "999077",
+    "Mobile": "6581234567"
   }

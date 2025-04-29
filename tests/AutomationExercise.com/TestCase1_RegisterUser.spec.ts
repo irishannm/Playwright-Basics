@@ -4,7 +4,8 @@ import testData from '../testData/testData.json';
 test('Verify if able to register successfully', async  ({ page }) => {
 
     //Test Data
-    const {name, email, password, First_Name, Last_Name} = testData;
+    const {name, email, password, First_Name, Last_Name, Company, 
+        Address1, Address2, State, City, Zipcode, Mobile } = testData;
 
     //2. Navigate to URL
     await page.goto('https://automationexercise.com')
@@ -58,7 +59,19 @@ test('Verify if able to register successfully', async  ({ page }) => {
     //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
     await page.fill('#first_name',First_Name)
     await page.fill('#last_name', Last_Name)
-
+    await page.fill('#company', Company)
+    await page.fill('#address1', Address1)
+    await page.fill('#address2', Address2)
+    await page.getByRole('combobox',{name: 'Country'}).click
+    await page.waitForTimeout(2000)
+    await page.getByRole('option',{name: 'Singapore'}).click()
+    await page.fill('#state', State)
+    await page.fill('#city', City)
+    await page.fill('#zipcode', Zipcode)
+    await page.fill('#mobile_number', Mobile)
+    
+    //13. Click 'Create Account button'
+    await page.getByRole('button',{name: "Create Account"}).click()
 })
 
 
