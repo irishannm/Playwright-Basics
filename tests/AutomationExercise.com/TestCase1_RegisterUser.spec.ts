@@ -4,7 +4,7 @@ import testData from '../testData/testData.json';
 test('Verify if able to register successfully', async  ({ page }) => {
 
     //Test Data
-    const {name, email} = testData;
+    const {name, email, password, First_Name, Last_Name} = testData;
 
     //2. Navigate to URL
     await page.goto('https://automationexercise.com')
@@ -30,8 +30,35 @@ test('Verify if able to register successfully', async  ({ page }) => {
 
     //9. Fill details: Title, Name, Email, Password, Date of birth
     await page.locator('#id_gender1').check(); // Select title = Mr, to enhance will select based on names
-      
     
+    //Fill password
+    await page.locator('[data-qa="password"]').fill(password)
+    
+    //Filling date of birth - (DAY)
+    await page.getByRole('combobox',{name: 'Day'}).click()
+    await page.waitForTimeout(3000); // wait for 3 seconds
+    await page.getByRole('option',{name: '15'}).click()
+    
+    //Filling for Month
+    await page.getByRole('combobox',{name: 'Month'}).click
+    await page.waitForTimeout(3000); // wait for 3 seconds
+    await page.getByRole('option',{name: 'January'}).click()
+
+    //Filling for (Year)
+    await page.getByRole('combobox',{name: 'Year'}).click()
+    await page.waitForTimeout(3000); // wait for 3 seconds
+    await page.getByRole('option',{name: '2002'}).click()
+
+    //10. Select checkbox 'Sign up for our newsletter!'
+    await page.check('#newsletter')
+
+    //11. Select checkbox 'Receive special offers from our partners!'
+    await page.check('#optin')
+
+    //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
+    await page.fill('#first_name',First_Name)
+    await page.fill('#last_name', Last_Name)
+
 })
 
 
