@@ -21,7 +21,6 @@ test('Verify if able to register successfully', async  ({ page }) => {
     //6. Enter name and email address
     await page.locator('[data-qa="signup-name"]').fill(name)
     await page.locator('[data-qa="signup-email"]').fill(email)
-    await page.locator('[data-qa="signup-button"]').click()
 
     //7. Cick 'Signup' button //- That uses a case-insensitive RegEx 
     await page.getByRole('button',{ name: /signup/i }).click()
@@ -29,6 +28,9 @@ test('Verify if able to register successfully', async  ({ page }) => {
     //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
     await expect(page.getByText(/enter account information/i)).toBeVisible()
 
+    //9. Fill details: Title, Name, Email, Password, Date of birth
+    await page.locator('#id_gender1').check(); // Select title = Mr, to enhance will select based on names
+      
     
 })
 
