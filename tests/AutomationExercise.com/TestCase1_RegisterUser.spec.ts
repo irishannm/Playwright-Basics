@@ -51,15 +51,31 @@ test('Verify if able to register successfully', async  ({ page }) => {
     await page.fill('#company', Company)
     await page.fill('#address1', Address1)
     await page.fill('#address2', Address2)
-   await page.getByLabel('Country *').selectOption('Singapore');
+    await page.getByLabel('Country *').selectOption('Singapore');
     await page.fill('#state', State)
     await page.fill('#city', City)
     await page.fill('#zipcode', Zipcode)
     await page.fill('#mobile_number', Mobile)
-    
 
     //13. Click 'Create Account button'
     await page.getByRole('button',{name: "Create Account"}).click()
+
+    //14. Verify that 'ACCOUNT CREATED!' is visible
+    await expect(page.getByText(/Account Created!/i)).toBeVisible()
+
+    //15. Click 'Continue' button
+    await page.locator('[data-qa="continue-button"]').click()
+
+    //16. Verify that 'Logged in as username' is visible
+    await expect(page.getByText(`Logged in as ${name}`)).toBeVisible();
+
+    //17. Click 'Delete Account' button
+    //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+
+
+
+
+
 })
 
 
