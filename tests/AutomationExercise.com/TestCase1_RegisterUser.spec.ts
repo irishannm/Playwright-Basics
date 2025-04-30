@@ -34,22 +34,11 @@ test('Verify if able to register successfully', async  ({ page }) => {
     
     //Fill password
     await page.locator('[data-qa="password"]').fill(password)
-    
-    //Filling date of birth - (DAY)
-    await page.getByRole('combobox',{name: 'Day'}).click()
-    await page.waitForTimeout(3000); // wait for 3 seconds
-    await page.getByRole('option',{name: '15'}).click()
-    
-    //Filling for Month
-    await page.getByRole('combobox',{name: 'Month'}).click
-    await page.waitForTimeout(3000); // wait for 3 seconds
-    await page.getByRole('option',{name: 'January'}).click()
 
-    //Filling for (Year)
-    await page.getByRole('combobox',{name: 'Year'}).click()
-    await page.waitForTimeout(3000); // wait for 3 seconds
-    await page.getByRole('option',{name: '2002'}).click()
-
+    await page.locator('#days').selectOption('8');
+    await page.locator('#months').selectOption('3');
+    await page.locator('#years').selectOption('2004');
+ 
     //10. Select checkbox 'Sign up for our newsletter!'
     await page.check('#newsletter')
 
@@ -62,14 +51,13 @@ test('Verify if able to register successfully', async  ({ page }) => {
     await page.fill('#company', Company)
     await page.fill('#address1', Address1)
     await page.fill('#address2', Address2)
-    await page.getByRole('combobox',{name: 'Country'}).click
-    await page.waitForTimeout(2000)
-    await page.getByRole('option',{name: 'Singapore'}).click()
+   await page.getByLabel('Country *').selectOption('Singapore');
     await page.fill('#state', State)
     await page.fill('#city', City)
     await page.fill('#zipcode', Zipcode)
     await page.fill('#mobile_number', Mobile)
     
+
     //13. Click 'Create Account button'
     await page.getByRole('button',{name: "Create Account"}).click()
 })

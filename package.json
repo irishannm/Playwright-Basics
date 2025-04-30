@@ -6,7 +6,8 @@
   "scripts": {
     "example-test":"npx playwright test example.spec.ts --project chromium --ui",
     "login-test": "npx playwright test login.spec.ts --project chromium",
-    "TC1-RegUser": "npx playwright test TestCase1_RegisterUser.spec.ts --project chromium --ui --headed"
+    "TC1-RegUser": "npx playwright test TestCase1_RegisterUser.spec.ts --project chromium --ui --headed",
+    "TC2": "npx playwright test TestCase2.spec.ts --project chromium --ui --headed"
   },
   "repository": {
     "type": "git",
