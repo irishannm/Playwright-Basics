@@ -70,11 +70,11 @@ test('Verify if able to register successfully', async  ({ page }) => {
     await expect(page.getByText(`Logged in as ${name}`)).toBeVisible();
 
     //17. Click 'Delete Account' button
+    await page.getByRole('link',{name: /Delete Account/i}).click()
+
     //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-
-
-
-
+    await expect(page.getByText(/Account Deleted!/i)).toBeVisible()
+    await page.locator('[data-qa="continue-button"]').click()
 
 })
 
