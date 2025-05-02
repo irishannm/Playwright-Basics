@@ -1,38 +1,34 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import testData from '../testData/testData.json';
 
-test('Verify if able to login with correct email and password', async  ({ page }) => {
-    
-    const {email, password } = testData;
+test('Login and delete account with valid credentials', async ({ page }) => {
+  const { email, password, name } = testData;
 
-    // 1. Launch browser
-    // 2. Navigate to url 'http://automationexercise.com'
-    await page.goto("http://automationexercise.com")
+  // 1. Go to the website
+  await page.goto('https://automationexercise.com');
 
-    // 3. Verify that home page is visible successfully
-    await expect(page).toHaveURL('https://automationexercise.com/');
+  // 2. Verify homepage loaded
+  await expect(page).toHaveURL('https://automationexercise.com/');
 
-    // 4. Click on 'Signup / Login' button
-    await page.click("text= Signup / Login")
+  // 3. Click on 'Signup / Login'
+  await page.getByRole('link', { name: 'Signup / Login' }).click();
 
-    // 5. Verify 'Login to your account' is visible
-    await expect(page.getByText('Login to your account')).toBeVisible()
+  // 4. Verify login form is visible
+  await expect(page.getByText('Login to your account')).toBeVisible();
 
-    // 6. Enter correct email address and password
-    await page.fill("#login-email", email)
-    await page.fill("#login-password",password)
+  // 5. Enter login credentials
+  await page.locator('[data-qa="login-email"]').fill(email);
+  await page.locator('[data-qa="login-password"]').fill(password);
 
-    // 7. Click 'login' button
-    await page.getByRole("button", {name: /Login/i}).click()
+  // 6. Click 'Login' button
+  await page.getByRole('button', { name: 'Login' }).click();
 
-    // 8. Verify that 'Logged in as username' is visible
-    await expect(page.getByText(`Logged in as ${name}`)).toBeVisible();
+  // 7. Verify user is logged in
+  await expect(page.getByText(`Logged in as ${name}`)).toBeVisible();
 
-    // 9. Click 'Delete Account' button
-    await page.getByRole("link", {name: /Delete Account/i}).click()
+  // 8. Delete the account
+  await page.getByRole('link', { name: 'Delete Account' }).click();
 
-    // 10. Verify that 'ACCOUNT DELETED!' is visible
-    await expect(page.getByText(/Account Deleted!/i)).toBeVisible();
-
-
-})
+  // 9. Verify account deletion message
+  await expect(page.getByText(/Account Deleted!/i)).toBeVisible();
+});
